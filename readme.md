@@ -1,6 +1,4 @@
-# protractor-intercept
-
-<!-- [![Build Status](https://travis-ci.org/bassettsj/protractor-intercept.svg?branch=master)](https://travis-ci.org/bassettsj/protractor-intercept) -->
+# protractor-intercept [![Build Status](https://travis-ci.org/bassettsj/protractor-intercept.svg?branch=master)](https://travis-ci.org/bassettsj/protractor-intercept)
 
 > Simple Interception of the XMLHttpRequest on the current context.
 
