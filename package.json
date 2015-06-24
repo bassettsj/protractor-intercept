@@ -13,6 +13,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "pretest": "webdriver-manager update",
     "test": "standard src/**/*.js && protractor test/protractor-config.js",
     "prepublish": "babel --optional runtime src --out-dir lib --source-maps"
   },
