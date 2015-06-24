@@ -13,7 +13,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "standard src/**/*.js",
+    "test": "standard src/**/*.js && protractor test/protractor-config.js",
     "prepublish": "babel --optional runtime src --out-dir lib --source-maps"
   },
   "main": "lib/index.js",
