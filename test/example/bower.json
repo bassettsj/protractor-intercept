@@ -1,0 +1,7 @@
+{
+  "name": "protractor-intercept-test",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.1"
+  }
+}

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" ng-app="example">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    </head>
+    <body ng-controller="MainCtrl as main">
+        <button id="getUsers" type="button" ng-click="main.getUsers()">Get Users</button>
+        <ul ng-show="main.users.length">
+          <li ng-repeat="user in main.users track by user.id" ng-bind="user.name"></li>
+        </ul>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>

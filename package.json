@@ -16,9 +16,7 @@
     "test": "standard src/**/*.js",
     "prepublish": "babel --optional runtime src --out-dir lib --source-maps"
   },
-  "files": [
-    "lib/index.js"
-  ],
+  "main": "lib/index.js",
   "keywords": [
     "protractor",
     "test",
@@ -26,10 +24,14 @@
     "angular"
   ],
   "dependencies": {
-    "babel-runtime": "^5.6.5"
+    "babel-runtime": "^5.6.5",
+    "phantomjs": "^1.9.17",
+    "protractor": "^2.1.0"
   },
   "devDependencies": {
     "babel": "^5.6.5",
+    "chance": "^0.7.6",
+    "express": "^4.13.0",
     "standard": "^4.3.2"
   }
 }
