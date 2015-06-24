@@ -25,14 +25,14 @@
     "angular"
   ],
   "dependencies": {
-    "babel-runtime": "^5.6.5",
-    "phantomjs": "^1.9.17",
-    "protractor": "^2.1.0"
+    "babel-runtime": "^5.6.5"
   },
   "devDependencies": {
     "babel": "^5.6.5",
     "chance": "^0.7.6",
     "express": "^4.13.0",
+    "phantomjs": "^1.9.17",
+    "protractor": "^2.1.0",
     "standard": "^4.3.2"
   }
 }
