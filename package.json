@@ -1,0 +1,35 @@
+{
+  "name": "protractor-intercept",
+  "version": "1.0.0",
+  "description": "Intercept AJAX requests from ",
+  "license": "MIT",
+  "repository": "bassettsj/protractor-intercept",
+  "author": {
+    "name": "Steven Bassett",
+    "email": "steven.j.bassett@gmail.com",
+    "url": "bassettsj.me"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "standard src/**/*.js",
+    "prepublish": "babel --optional runtime src --out-dir lib --source-maps"
+  },
+  "files": [
+    "lib/index.js"
+  ],
+  "keywords": [
+    "protractor",
+    "test",
+    "ajax",
+    "angular"
+  ],
+  "dependencies": {
+    "babel-runtime": "^5.6.5"
+  },
+  "devDependencies": {
+    "babel": "^5.6.5",
+    "standard": "^4.3.2"
+  }
+}
