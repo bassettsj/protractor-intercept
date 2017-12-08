@@ -10,7 +10,16 @@ export function removeListener () {
     XMLHttpRequest.prototype.open = window._open
     delete window._open
     if ('httpRequests' in window) {
-      var requests = window.httpRequests
+      var requests
+
+      if (window.httpRequests) {
+        requests = window.httpRequests.filter(function (x) {
+          return x.responseType !== 'blob'
+        });
+      } else {
+        requests = window.httpRequests
+      }
+
       delete window.httpRequests
       return requests
     }
@@ -20,7 +29,13 @@ export function removeListener () {
  * Get the captured requests.
  */
 export function getRequests () {
-  return window.httpRequests
+  if (window.httpRequests) {
+    return window.httpRequests.filter(function (x) {
+      return x.responseType !== 'blob'
+    })
+  } else {
+    return window.httpRequests
+  }
 }
 /**
  * Add the open listener by wrapping the current function.
