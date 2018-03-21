@@ -10,18 +10,7 @@ export function removeListener () {
     XMLHttpRequest.prototype.open = window._open
     delete window._open
     if ('httpRequests' in window) {
-      var requests
-
-      if (window.httpRequests) {
-        requests = window.httpRequests.filter(function (x) {
-          return x.responseType !== 'blob'
-        });
-      } else {
-        requests = window.httpRequests
-      }
-
       delete window.httpRequests
-      return requests
     }
   }
 }
@@ -30,11 +19,20 @@ export function removeListener () {
  */
 export function getRequests () {
   if (window.httpRequests) {
-    return window.httpRequests.filter(function (x) {
-      return x.responseType !== 'blob'
+    return window.httpRequests.map(record => {
+      if (record.request.responseType !== 'blob') { return record }
+      return {
+        timing: record.timing,
+        request: {
+          url: record.request.responseURL,
+          status: record.request.status,
+          statusText: record.request.statusText,
+          responseText: '{ "blob": "redacted" }'
+        }
+      }
     })
   } else {
-    return window.httpRequests
+    return []
   }
 }
 /**
@@ -45,7 +43,12 @@ export function openListener () {
     window.httpRequests = window.httpRequests || []
     window._open = open
     XMLHttpRequest.prototype.open = function () {
-      window.httpRequests.push(this)
+      const record = {
+        timing: { init: (new Date().toISOString()) },
+        request: this
+      }
+
+      window.httpRequests.push(record)
       return open.apply(this, arguments)
     }
   })(XMLHttpRequest.prototype.open)
