@@ -29,7 +29,7 @@ export function getRequests () {
         return {
           timing: record.timing,
           request: {
-            url: record.request.responseURL,
+            responseURL: record.request.responseURL,
             status: record.request.status,
             statusText: record.request.statusText,
             responseText: '{ "blob": "redacted" }'
