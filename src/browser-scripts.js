@@ -52,17 +52,25 @@ export function openListener () {
       window.httpRequests = window.httpRequests || []
       window._open = open
       XMLHttpRequest.prototype.open = function () {
+        // NB window._Date is the "real" Date when we use lolex to advance browser time
+        function getTimeStamp () {
+          return (window._Date)
+            ? (new window._Date()).toISOString()
+            : (new Date()).toISOString()
+        }
+
         const record = {
-          timing: { init: (new Date().toISOString()) },
+          timing: { init: getTimeStamp() },
           request: this
         }
 
-        this.addEventListener('loadstart', function () { record.timing['loadstart'] = (new Date().toISOString()) })
-        this.addEventListener('abort', function () { record.timing['abort'] = (new Date().toISOString()) })
-        this.addEventListener('error', function () { record.timing['error'] = (new Date().toISOString()) })
-        this.addEventListener('load', function () { record.timing['load'] = (new Date().toISOString()) })
-        this.addEventListener('timeout', function () { record.timing['timeout'] = (new Date().toISOString()) })
-        this.addEventListener('loadend', function () { record.timing['loadend'] = (new Date().toISOString()) })
+
+        this.addEventListener('loadstart', function () { record.timing['loadstart'] = getTimeStamp() })
+        this.addEventListener('abort', function () { record.timing['abort'] = getTimeStamp() })
+        this.addEventListener('error', function () { record.timing['error'] = getTimeStamp() })
+        this.addEventListener('load', function () { record.timing['load'] = getTimeStamp() })
+        this.addEventListener('timeout', function () { record.timing['timeout'] = getTimeStamp() })
+        this.addEventListener('loadend', function () { record.timing['loadend'] = getTimeStamp() })
 
         window.httpRequests.push(record)
         return open.apply(this, arguments)
