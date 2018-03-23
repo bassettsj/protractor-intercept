@@ -23,7 +23,7 @@ coverage
 build/Release
 
 # Compiled scripts shouldn't be needed
-lib
+# lib
 
 # Dependency directory
 # https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
